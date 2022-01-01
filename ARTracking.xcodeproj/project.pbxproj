@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E4461A6277DBA0A00F92C2A /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4461A5277DBA0A00F92C2A /* BrowseView.swift */; };
+		8E886B95277D8C1500759B92 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E886B94277D8C1500759B92 /* ControlView.swift */; };
 		8EAA3D13277C99DB006A9E3C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA3D12277C99DB006A9E3C /* Model.swift */; };
 		8EDB63A5277B4EA2004C0EF3 /* ARTrackingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB63A4277B4EA2004C0EF3 /* ARTrackingApp.swift */; };
 		8EDB63A7277B4EA2004C0EF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB63A6277B4EA2004C0EF3 /* ContentView.swift */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E4461A5277DBA0A00F92C2A /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
+		8E886B94277D8C1500759B92 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		8EAA3D12277C99DB006A9E3C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		8EDB63A1277B4EA2004C0EF3 /* ARTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EDB63A4277B4EA2004C0EF3 /* ARTrackingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTrackingApp.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 				8EDB63A8277B4EA3004C0EF3 /* Assets.xcassets */,
 				8EDB63AA277B4EA3004C0EF3 /* Preview Content */,
 				8EAA3D12277C99DB006A9E3C /* Model.swift */,
+				8E886B94277D8C1500759B92 /* ControlView.swift */,
+				8E4461A5277DBA0A00F92C2A /* BrowseView.swift */,
 			);
 			path = ARTracking;
 			sourceTree = "<group>";
@@ -162,6 +168,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E4461A6277DBA0A00F92C2A /* BrowseView.swift in Sources */,
+				8E886B95277D8C1500759B92 /* ControlView.swift in Sources */,
 				8EAA3D13277C99DB006A9E3C /* Model.swift in Sources */,
 				8EDB63A7277B4EA2004C0EF3 /* ContentView.swift in Sources */,
 				8EDB63A5277B4EA2004C0EF3 /* ARTrackingApp.swift in Sources */,
@@ -305,7 +313,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -337,7 +345,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -4,12 +4,16 @@
 //
 //  Created by Monyneath Mol on 28/12/21.
 //
-
 import SwiftUI
 import RealityKit
 import ARKit
+import AVFoundation
+
 
 struct ContentView: View {
+    
+    @State private var isControlVisible : Bool = false
+    @State private var showBrowse : Bool = false
     
     @State private var isPlacementEnable = false
     @State private var selectedModel : Model?
@@ -26,7 +30,7 @@ struct ContentView: View {
         for filename in files where filename.hasSuffix("usdz") {
             
             let modelName = filename.replacingOccurrences(of: ".usdz", with: "")
-            let model = Model(modelName: modelName)
+            let model = Model(modelName: modelName, category: .chair)
             availableModels.append(model)
         }
         
@@ -37,18 +41,22 @@ struct ContentView: View {
         ZStack(alignment: .bottom){
             ARViewContainer(modelConfirmForPlacement: $modelConfirmedForPlacement)
             
-            if self.isPlacementEnable {
-                PlacementButtonView(
-                    isPlacementEnabled: $isPlacementEnable,
-                    selectedModel: $selectedModel,
-                    modelConfirmedForPlacement: $modelConfirmedForPlacement)
-            }else {
-                ModelPickerView(isPlacementEnabled: $isPlacementEnable,
-                                selectedModel: $selectedModel,
-                                models: models)
-            }
+            ControlView(isControlVisible: $isControlVisible,
+                        showBrowse: $showBrowse)
+//            
+//            if self.isPlacementEnable {
+//                PlacementButtonView(
+//                    isPlacementEnabled: $isPlacementEnable,
+//                    selectedModel: $selectedModel,
+//                    modelConfirmedForPlacement: $modelConfirmedForPlacement)
+//            }else {
+//                ModelPickerView(isPlacementEnabled: $isPlacementEnable,
+//                                selectedModel: $selectedModel,
+//                                models: models)
+//            }
         }
-        .background(Color.blue)
+//        .background(Color.blue)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -70,12 +78,15 @@ struct ARViewContainer : UIViewRepresentable{
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {
-        
+   
+        /*
         if let model = self.modelConfirmForPlacement {
             print("DEBUG: added model : \(model.modelName)")
 
             if let modelEntity =   model.modelEntity {
-                let anchorEntity = AnchorEntity(plane: .any)
+
+                let anchorEntity = AnchorEntity.init(.vertical)
+
                 
                 anchorEntity.addChild(modelEntity.clone(recursive: true))
                 uiView.scene.addAnchor(anchorEntity)
@@ -87,6 +98,8 @@ struct ARViewContainer : UIViewRepresentable{
                 modelConfirmForPlacement = nil
             }
         }
+         
+         */
     }
 } 
 
@@ -178,5 +191,6 @@ struct PlacementButtonView: View{
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice("iPhone 12")
     }
 }
