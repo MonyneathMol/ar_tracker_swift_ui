@@ -11,13 +11,10 @@ import AVFoundation
 
 
 struct ContentView: View {
-    
+    @EnvironmentObject var placementSettings : PlacementSettings
     @State private var isControlVisible : Bool = false
     @State private var showBrowse : Bool = false
-    
     @State private var isPlacementEnable = false
-    @State private var selectedModel : Model?
-    @State private var modelConfirmedForPlacement :  Model?
     
     private var models : [Model] = {
         let fileManager = FileManager.default
@@ -39,68 +36,68 @@ struct ContentView: View {
     
     var body: some View {
         ZStack(alignment: .bottom){
-            ARViewContainer(modelConfirmForPlacement: $modelConfirmedForPlacement)
+//            ARViewContainer(modelConfirmForPlacement: $placementSettings.confirmedSelectedModel)
+            ARViewContainer()
             
-            ControlView(isControlVisible: $isControlVisible,
-                        showBrowse: $showBrowse)
-//            
-//            if self.isPlacementEnable {
-//                PlacementButtonView(
-//                    isPlacementEnabled: $isPlacementEnable,
-//                    selectedModel: $selectedModel,
-//                    modelConfirmedForPlacement: $modelConfirmedForPlacement)
-//            }else {
-//                ModelPickerView(isPlacementEnabled: $isPlacementEnable,
-//                                selectedModel: $selectedModel,
-//                                models: models)
-//            }
+            
+            if placementSettings.selectedModel == nil {
+                ControlView(isControlVisible: $isControlVisible,
+                            showBrowse: $showBrowse)
+            }else {
+                PlacementButtonView()
+            }
+            
         }
-//        .background(Color.blue)
         .edgesIgnoringSafeArea(.all)
     }
 }
 
 struct ARViewContainer : UIViewRepresentable{
-    @Binding var modelConfirmForPlacement: Model?
-    func makeUIView(context: Context) -> ARView {
-        let arView = ARView(frame: .zero)
-        let config = ARWorldTrackingConfiguration()
-        config.planeDetection = [.horizontal,.vertical]
-        config.environmentTexturing = .automatic
+    @EnvironmentObject var placementSettings : PlacementSettings
+    func makeUIView(context: Context) ->       CustomARView {
+        let arView = CustomARView(frame: CGRect.zero)
         
-        if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh) {
-            config.sceneReconstruction = .mesh
-        }
-        
-        arView.session.run(config)
+        self.placementSettings.scenceObserver = arView.scene.subscribe(to: SceneEvents.Update.self, { event in
+            
+            updateScene(for: arView)
+        })
         
         return arView
     }
     
-    func updateUIView(_ uiView: ARView, context: Context) {
-   
-        /*
-        if let model = self.modelConfirmForPlacement {
-            print("DEBUG: added model : \(model.modelName)")
-
-            if let modelEntity =   model.modelEntity {
-
-                let anchorEntity = AnchorEntity.init(.vertical)
-
-                
-                anchorEntity.addChild(modelEntity.clone(recursive: true))
-                uiView.scene.addAnchor(anchorEntity)
-            }else{
-                print("DEBUG: Unable to load Model : \(model.modelName)")
-            }
-
-            DispatchQueue.main.async {
-                modelConfirmForPlacement = nil
-            }
-        }
-         
-         */
+    func updateUIView(_ uiView: CustomARView, context: Context) {
+        
     }
+    
+    private func updateScene(for arView: CustomARView) {
+ 
+        arView.focusEntity?.isEnabled = self.placementSettings.selectedModel != nil
+        if let confirmModelEntity = placementSettings.confirmedSelectedModel, let modelEntity = confirmModelEntity.modelEntity {
+             
+            place(modelEntity, arView: arView)
+            placementSettings.confirmedSelectedModel = nil
+        }
+        
+    }
+    
+    private func place(_ modelEntity: ModelEntity,arView: ARView){
+        
+        //1. Clone model entity
+        let cloneEntity = modelEntity.clone(recursive: true)
+        
+        //2. Enable roation and translation to model entity
+        cloneEntity.generateCollisionShapes(recursive: true)
+        arView.installGestures([.rotation,.translation],for: cloneEntity)
+        
+        //3. Create anchor entity and add clone model to anchor entity
+        let anchorEntity = AnchorEntity.init(plane: .any)
+        anchorEntity.addChild(cloneEntity)
+        
+        //4. Add ArView to the scene
+        arView.scene.addAnchor(anchorEntity)
+        debugPrint("DEBUG:Added entity to the view")
+    }
+    
 } 
 
 struct ModelPickerView: View{
@@ -141,56 +138,10 @@ struct ModelPickerView: View{
 }
 
 
-struct PlacementButtonView: View{
-    
-    @Binding var isPlacementEnabled : Bool
-    @Binding var selectedModel : Model?
-    @Binding var modelConfirmedForPlacement : Model?
-    var body: some View {
-        HStack{
-            //cancel button
-            Button {
-                print("Cancel Model Palacement")
-                resetPlacement()
-                
-            } label: {
-                Image(systemName: "xmark")
-                    .frame(width: 60.0, height: 60.0)
-                    .background(Color.red.opacity(0.5))
-                    .cornerRadius(60.0)
-                    .padding(4.0)
-                    
-            }
-            
-            // Confirm button
-            Button {
-                print("enable Model Palacement")
-                
-                modelConfirmedForPlacement = selectedModel
-                resetPlacement()
-                
-            } label: {
-                Image(systemName: "checkmark")
-                    .frame(width: 60.0, height: 60.0)
-                    .background(Color.white.opacity(0.5))
-                    .cornerRadius(60.0)
-                    .padding(4.0)
-                    
-            }
-
-        }
-    }
-    
-    
-    private func resetPlacement(){
-        isPlacementEnabled = false
-        selectedModel = nil
-    }
-}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .previewDevice("iPhone 12")
+            .environmentObject(PlacementSettings())
     }
 }

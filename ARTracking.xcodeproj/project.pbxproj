@@ -17,6 +17,10 @@
 		8EDB63B5277B5035004C0EF3 /* toy_car.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 8EDB63B3277B502E004C0EF3 /* toy_car.usdz */; };
 		8EDB63B6277B5035004C0EF3 /* toy_drummer.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 8EDB63B4277B5035004C0EF3 /* toy_drummer.usdz */; };
 		8EDB63B8277B5071004C0EF3 /* chair_swan.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 8EDB63B7277B5070004C0EF3 /* chair_swan.usdz */; };
+		8EE5D3E22780551D004AAB59 /* PlacementSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5D3E12780551D004AAB59 /* PlacementSettings.swift */; };
+		8EE5D3E42780597E004AAB59 /* PlacementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5D3E32780597E004AAB59 /* PlacementView.swift */; };
+		8EE5D3E72780617A004AAB59 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 8EE5D3E62780617A004AAB59 /* FocusEntity */; };
+		8EE5D3E927806441004AAB59 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5D3E827806441004AAB59 /* CustomARView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,9 @@
 		8EDB63B4277B5035004C0EF3 /* toy_drummer.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_drummer.usdz; sourceTree = "<group>"; };
 		8EDB63B7277B5070004C0EF3 /* chair_swan.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = chair_swan.usdz; sourceTree = "<group>"; };
 		8EDB63B9277B6380004C0EF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8EE5D3E12780551D004AAB59 /* PlacementSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementSettings.swift; sourceTree = "<group>"; };
+		8EE5D3E32780597E004AAB59 /* PlacementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacementView.swift; sourceTree = "<group>"; };
+		8EE5D3E827806441004AAB59 /* CustomARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomARView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE5D3E72780617A004AAB59 /* FocusEntity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +81,9 @@
 				8EAA3D12277C99DB006A9E3C /* Model.swift */,
 				8E886B94277D8C1500759B92 /* ControlView.swift */,
 				8E4461A5277DBA0A00F92C2A /* BrowseView.swift */,
+				8EE5D3E12780551D004AAB59 /* PlacementSettings.swift */,
+				8EE5D3E32780597E004AAB59 /* PlacementView.swift */,
+				8EE5D3E827806441004AAB59 /* CustomARView.swift */,
 			);
 			path = ARTracking;
 			sourceTree = "<group>";
@@ -111,6 +122,9 @@
 			dependencies = (
 			);
 			name = ARTracking;
+			packageProductDependencies = (
+				8EE5D3E62780617A004AAB59 /* FocusEntity */,
+			);
 			productName = ARTracking;
 			productReference = 8EDB63A1277B4EA2004C0EF3 /* ARTracking.app */;
 			productType = "com.apple.product-type.application";
@@ -139,6 +153,9 @@
 				Base,
 			);
 			mainGroup = 8EDB6398277B4EA2004C0EF3;
+			packageReferences = (
+				8EE5D3E527806179004AAB59 /* XCRemoteSwiftPackageReference "FocusEntity" */,
+			);
 			productRefGroup = 8EDB63A2277B4EA2004C0EF3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -168,11 +185,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EE5D3E22780551D004AAB59 /* PlacementSettings.swift in Sources */,
 				8E4461A6277DBA0A00F92C2A /* BrowseView.swift in Sources */,
 				8E886B95277D8C1500759B92 /* ControlView.swift in Sources */,
 				8EAA3D13277C99DB006A9E3C /* Model.swift in Sources */,
 				8EDB63A7277B4EA2004C0EF3 /* ContentView.swift in Sources */,
 				8EDB63A5277B4EA2004C0EF3 /* ARTrackingApp.swift in Sources */,
+				8EE5D3E927806441004AAB59 /* CustomARView.swift in Sources */,
+				8EE5D3E42780597E004AAB59 /* PlacementView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +401,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8EE5D3E527806179004AAB59 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8EE5D3E62780617A004AAB59 /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8EE5D3E527806179004AAB59 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8EDB6399277B4EA2004C0EF3 /* Project object */;
 }

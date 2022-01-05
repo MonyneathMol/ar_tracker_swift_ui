@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct ARTrackingApp: App {
+    
+    @StateObject var placementSettings = PlacementSettings()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(placementSettings)
         }
     }
 }
