@@ -78,24 +78,24 @@ struct Models {
     
     init(){
         
-        for i in 0...4 {
-            let chair = Model(modelName: "chair_swan", category: .chair,scaleCompensation: Float(i/10))
+        for _ in 0...4 {
+            let chair = Model(modelName: "chair_swan", category: .chair,scaleCompensation: 1.0)
             all += [chair]
         }
         
 
-        for i in 0...2 {
-            let chair = Model(modelName: "toy_char", category: .decor,scaleCompensation: Float(i/10))
+        for _ in 0...2 {
+            let chair = Model(modelName: "toy_char", category: .decor,scaleCompensation: 1.0)
             all += [chair]
         }
         
-        for i in 0...3 {
-            let chair = Model(modelName: "toy_drummer", category: .table,scaleCompensation: Float(i/10))
+        for _ in 0...3 {
+            let chair = Model(modelName: "toy_drummer", category: .table,scaleCompensation: 1.0)
             all += [chair]
         }
         
-        for i in 0...2 {
-            let chair = Model(modelName: "toy_drummer", category: .light,scaleCompensation: Float(i/10))
+        for _ in 0...2 {
+            let chair = Model(modelName: "toy_drummer", category: .light,scaleCompensation: 1.0)
             all += [chair]
         }
     }

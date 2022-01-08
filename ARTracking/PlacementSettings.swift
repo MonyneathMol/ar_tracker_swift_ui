@@ -19,11 +19,20 @@ class PlacementSettings : ObservableObject {
         }
     }
     
-    @Published var confirmedSelectedModel :  Model? {
-        willSet{
-            print("DEBUG: will set confirmedSelectedModel \(newValue?.modelName ?? "")")
+    @Published var confirmedSelectedModel : Model? {
+        willSet(newValue){
+            guard let model = newValue else{
+                debugPrint("DEBUG: Confim model clear")
+                return
+            }
+            print("DEBUG: will set confirmedSelectedModel \(newValue?.modelName ?? "NA")")
+            
+            recentlyPlaceModels.append(model)
         }
     }
+    
+    
+    @Published var recentlyPlaceModels : [Model] = []
     
     var scenceObserver: Cancellable?
 }

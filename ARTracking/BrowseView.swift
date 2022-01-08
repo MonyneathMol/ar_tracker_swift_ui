@@ -12,6 +12,7 @@ struct BrowseView: View {
     var body: some View {
         NavigationView{
             ScrollView(showsIndicators: false, content: {
+                MostRecentlyGrid(showBrowse: $showBrowse)
                 HorizontalByCategoryGrid(showBrowse: $showBrowse)
             })
             
@@ -26,14 +27,49 @@ struct BrowseView: View {
         }
     }
 }
-//
-//struct BrowseView_Previews: PreviewProvider {
-//    @State static var isShowing = false
-//    static var previews: some View {
-//        BrowseView(showBrowse:$isShowing)
-//        
-//    }
-//}
+
+struct BrowseView_Previews: PreviewProvider {
+    @State static var isShowing = false
+    static var previews: some View {
+        BrowseView(showBrowse:$isShowing)
+        
+    }
+}
+
+
+struct MostRecentlyGrid: View {
+    @EnvironmentObject var placementSettings : PlacementSettings
+    @Binding var showBrowse : Bool
+    
+    var body: some View {
+        
+        if !placementSettings.recentlyPlaceModels.isEmpty {
+            
+            HorizontalGrid(showBrowse: $showBrowse, title: "Recently Item", items: getUniqueRecentModels())
+        }
+    }
+    
+    
+    func getUniqueRecentModels() -> [Model] {
+        var mostlyUniqueModel : [Model] = []
+        var modelSetName : Set<String> = []
+        
+        for model in placementSettings.recentlyPlaceModels.reversed() {
+            
+            if !modelSetName.contains(model.modelName) {
+                
+                mostlyUniqueModel.append(model)
+                modelSetName.insert(model.modelName)
+                
+            }
+            
+        }
+        
+        
+        return mostlyUniqueModel
+        
+    }
+}
 
 struct HorizontalByCategoryGrid : View {
     @Binding var showBrowse : Bool
@@ -110,7 +146,7 @@ struct ItemButton: View {
                 .frame(width: 150.0, height: 150.0)
                 .cornerRadius(8.0)
                 .aspectRatio(1/1, contentMode: .fit)
-                .background(Color(uiColor: UIColor.secondarySystemFill))
+                .background(Color(UIColor.secondarySystemFill))
             
         }
         //        .shadow(color: .black.opacity(0.1), radius: 5.0, x: 0.0, y: 0.0)

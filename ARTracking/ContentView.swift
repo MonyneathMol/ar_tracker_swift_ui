@@ -12,7 +12,7 @@ import AVFoundation
 
 struct ContentView: View {
     @EnvironmentObject var placementSettings : PlacementSettings
-    @State private var isControlVisible : Bool = false
+    @State private var isControlVisible : Bool = true
     @State private var showBrowse : Bool = false
     @State private var isPlacementEnable = false
     
@@ -140,8 +140,10 @@ struct ModelPickerView: View{
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
-            .previewDevice("iPhone 12")
-            .environmentObject(PlacementSettings())
+        Group {
+            ContentView()
+                .previewDevice("iPhone 12 Pro")
+                .environmentObject(PlacementSettings())
+        }
     }
 }

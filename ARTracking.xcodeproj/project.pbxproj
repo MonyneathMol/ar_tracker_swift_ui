@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E4461A6277DBA0A00F92C2A /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4461A5277DBA0A00F92C2A /* BrowseView.swift */; };
+		8E811DE627895C65004B3D36 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E811DE527895C65004B3D36 /* ViewExtension.swift */; };
 		8E886B95277D8C1500759B92 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E886B94277D8C1500759B92 /* ControlView.swift */; };
 		8EAA3D13277C99DB006A9E3C /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA3D12277C99DB006A9E3C /* Model.swift */; };
 		8EDB63A5277B4EA2004C0EF3 /* ARTrackingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDB63A4277B4EA2004C0EF3 /* ARTrackingApp.swift */; };
@@ -19,12 +20,13 @@
 		8EDB63B8277B5071004C0EF3 /* chair_swan.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 8EDB63B7277B5070004C0EF3 /* chair_swan.usdz */; };
 		8EE5D3E22780551D004AAB59 /* PlacementSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5D3E12780551D004AAB59 /* PlacementSettings.swift */; };
 		8EE5D3E42780597E004AAB59 /* PlacementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5D3E32780597E004AAB59 /* PlacementView.swift */; };
-		8EE5D3E72780617A004AAB59 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 8EE5D3E62780617A004AAB59 /* FocusEntity */; };
 		8EE5D3E927806441004AAB59 /* CustomARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE5D3E827806441004AAB59 /* CustomARView.swift */; };
+		8EFC55F927884BCD00D83854 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 8EFC55F827884BCD00D83854 /* FocusEntity */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8E4461A5277DBA0A00F92C2A /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
+		8E811DE527895C65004B3D36 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		8E886B94277D8C1500759B92 /* ControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		8EAA3D12277C99DB006A9E3C /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		8EDB63A1277B4EA2004C0EF3 /* ARTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EE5D3E72780617A004AAB59 /* FocusEntity in Frameworks */,
+				8EFC55F927884BCD00D83854 /* FocusEntity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +86,7 @@
 				8EE5D3E12780551D004AAB59 /* PlacementSettings.swift */,
 				8EE5D3E32780597E004AAB59 /* PlacementView.swift */,
 				8EE5D3E827806441004AAB59 /* CustomARView.swift */,
+				8E811DE527895C65004B3D36 /* ViewExtension.swift */,
 			);
 			path = ARTracking;
 			sourceTree = "<group>";
@@ -123,7 +126,7 @@
 			);
 			name = ARTracking;
 			packageProductDependencies = (
-				8EE5D3E62780617A004AAB59 /* FocusEntity */,
+				8EFC55F827884BCD00D83854 /* FocusEntity */,
 			);
 			productName = ARTracking;
 			productReference = 8EDB63A1277B4EA2004C0EF3 /* ARTracking.app */;
@@ -154,7 +157,7 @@
 			);
 			mainGroup = 8EDB6398277B4EA2004C0EF3;
 			packageReferences = (
-				8EE5D3E527806179004AAB59 /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				8EFC55F727884BCD00D83854 /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = 8EDB63A2277B4EA2004C0EF3 /* Products */;
 			projectDirPath = "";
@@ -185,6 +188,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E811DE627895C65004B3D36 /* ViewExtension.swift in Sources */,
 				8EE5D3E22780551D004AAB59 /* PlacementSettings.swift in Sources */,
 				8E4461A6277DBA0A00F92C2A /* BrowseView.swift in Sources */,
 				8E886B95277D8C1500759B92 /* ControlView.swift in Sources */,
@@ -333,7 +337,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,7 +369,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -403,7 +407,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8EE5D3E527806179004AAB59 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+		8EFC55F727884BCD00D83854 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
 			requirement = {
@@ -414,9 +418,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8EE5D3E62780617A004AAB59 /* FocusEntity */ = {
+		8EFC55F827884BCD00D83854 /* FocusEntity */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8EE5D3E527806179004AAB59 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			package = 8EFC55F727884BCD00D83854 /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
 		};
 /* End XCSwiftPackageProductDependency section */

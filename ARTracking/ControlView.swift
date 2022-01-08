@@ -27,8 +27,11 @@ struct ControlView: View {
 struct ControlView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ContentView()
-            .previewDevice("iPhone 12")
+        Group {
+            ContentView()
+                .previewDevice("iPhone 12 Pro")
+                .environmentObject(PlacementSettings())
+        }
     }
 }
 
@@ -65,16 +68,17 @@ struct ControlVisibilityToggleButton: View {
 
 
 struct ControlButtonBar: View {
-    
+    @EnvironmentObject var placementSettings: PlacementSettings
     @Binding var showBrowse : Bool
     
     var body: some View {
         HStack{
             
             
-            ControlButton(systemItemName: "clock.fill", action: {
-                print("clock selected")
-            })
+//            ControlButton(systemItemName: "clock.fill", action: {
+//                print("clock selected")
+//            })
+            MostRecentlyButton().hidden(placementSettings.recentlyPlaceModels.isEmpty)
             
             Spacer()
             
@@ -118,4 +122,29 @@ struct ControlButton: View{
 }
 
 
+struct MostRecentlyButton : View {
+    
+    @EnvironmentObject var placementSettings : PlacementSettings
+    
+    var body: some View {
+        Button {
+            debugPrint("DEBUG: Recently button selected")
+            placementSettings.selectedModel = placementSettings.recentlyPlaceModels.last
+        } label: {
+            
+            if let recentlyPlace = placementSettings.recentlyPlaceModels.last {
+                Image(uiImage: recentlyPlace.image)
+                    .resizable()
+                    .frame(width: 50.0)
+                    .aspectRatio(1/1, contentMode: .fit)
+            }else {
+                Image(systemName: "clock.fill")
+            }
+        }
+        .font(.system(size: 35.0))
+        .foregroundColor(Color.white)
+        .buttonStyle(.plain)
+        .frame(width: 50, height: 50)
 
+    }
+}
